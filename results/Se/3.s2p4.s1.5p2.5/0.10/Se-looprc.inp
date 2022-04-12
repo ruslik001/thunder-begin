@@ -1,0 +1,14 @@
+Selenium
+Se           ! symbol
+34           ! number
+78.971       ! atomic mass
+6.0          ! Number of valence electrons
+3            ! exchange correlation option
+2            ! number of shells
+0            ! angular momentum of shell 1
+2.0          ! number of electrons in first shell
+1            ! angular momentum of shell 2
+4.0          ! number of electrons in second shell
+3.0          ! initial radial cutoff
+8.0          ! final cutoff
+12.0         ! infinity radial cutoff - to get free atom eigenvalues

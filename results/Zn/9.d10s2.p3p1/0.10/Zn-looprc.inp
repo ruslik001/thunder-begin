@@ -1,0 +1,16 @@
+Zinc    !atom name
+Zn      !atom symbol
+30      !atomic number
+65.39   ! atomic mass
+12.0    ! number of valence electrons
+9       ! exchange-correlation option
+3       ! number of shells
+0       ! angular momentum of shell 1
+2.0     ! number of electrons in shell 1
+1       ! angular momentum of shell 2
+0.0     ! number of electrons in shell 2
+2       ! angular momentum of shell 3
+10.0    ! number of electrons in shell 3
+3.0     ! initial radial cutoff
+8.0     ! final cutoff
+12.0    ! infinity radial cutoff - to get free atom eigenvalues

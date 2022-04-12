@@ -1,0 +1,16 @@
+Titanium                 atom name
+Ti                       atom abbreviation
+22                       atomic number
+47.867                   atomic mass
+4.0                      number of valence electrons
+3                        exchange correlation
+3                        number of shells
+0                        angular momentum for s shell
+2.0                      number of electrons in s shell
+1                        angular momentum for p shell
+0.0                      number of electrons in p shell
+2                        angular momentum fo d shell
+2.0                      number of electrons in d shell
+3.0                      initial cutoff radius
+8.0                      final cutoff radius
+12.0                     infinity cutoff radius

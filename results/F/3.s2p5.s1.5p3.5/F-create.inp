@@ -1,0 +1,40 @@
+F                                      atomic symbol 
+9                                      atomic number 
+18.998                                 atomic mass 
+ 7.00                                  number of valence electrons 
+basis/009.pp                           pseudopotential filename 
+basis/009_355.na0                      neutral atom filename 
+6                                      number of shells 
+0                                      l of the shell 
+ 2.00                                  occupation number of the shell
+3.15                                   cutoff 
+basis/009_315.wf1                      wavefunction filename 
+basis/009_315.na1                      orbital potential filename 
+1                                      l of the shell 
+ 5.00                                  occupation number of the shell
+3.55                                   cutoff 
+basis/009_355.wf2                      wavefunction filename 
+basis/009_355.na2                      orbital potential filename 
+2                                      l of the shell 
+ 0.00                                  occupation number of the shell
+3.55                                   cutoff 
+basis/009_355.wf3                      wavefunction filename 
+basis/009_355.na3                      orbital potential filename 
+0                                      l of the shell (excited)
+0.0                                    occupation number of the (excited) shell
+3.15                                   cutoff 
+basis/009_315.ewf1                     wavefunction filename (excited) 
+basis/009_315.ena1                     orbital potential filename (excited) 
+1                                      l of the shell (excited)
+0.0                                    occupation number of the (excited) shell
+3.55                                   cutoff 
+basis/009_355.ewf2                     wavefunction filename (excited) 
+basis/009_355.ena2                     orbital potential filename (excited) 
+2                                      l of the shell (excited)
+0.0                                    occupation number of the (excited) shell
+3.55                                   cutoff 
+basis/009_355.ewf3                     wavefunction filename (excited) 
+basis/009_355.ena3                     orbital potential filename (excited) 
+2                                      for xc - shell of changed charge 
+0.5                                    dq of the changed shell for xc 
+0.125  0.125

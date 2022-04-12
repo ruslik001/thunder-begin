@@ -1,0 +1,34 @@
+Cadmium   ! atom name
+Cd        ! atom symbol
+48        ! atomic number
+112.414   ! atomic mass
+12.0      ! number of valence electrons
+3         ! exchange-correlation option
+3         ! number of shells (add three lines for each shell)
+0         ! angular momentum of shell 1
+2.0       ! number of electrons in shell 1
+5.10      ! radial cutoff for shell 1
+1         ! angular momentum of shell 2
+0.0       ! number of electrons in shell 2
+5.60      ! radial cutoff for shell 2
+2         ! angular momentum for shell 3 (this is an empty polarization state)
+10.0      ! number of electrons in shell 3
+4.49      ! radial cutoff for shell 3
+1         ! use excited states (do not include the "excited" lines if set to 0)
+10.0       ! number of valence electrons (excited)
+1.0       ! number of electrons in shell 1 (excited)
+0.0       ! number of electrons in shell 2 (excited)      (one line for each shell above)
+9.0       ! number of electrons in shell 3 (excited)
+1         ! optimize basis set with confinement potential
+0.0       ! Vo for shell 1
+0.0       ! r0 for shell 1
+10.0       ! V0 for shell 2           (two parameters for each shell listed above)
+0.5       ! r0 for shell 2
+0.0       ! V0 for shell 3
+0.0       ! r0 for shell 3
+0.0       ! V0 for shell 1 (excited)
+0.0       ! r0 for shell 1 (excited)
+0.0       ! V0 for shell 2 (excited)
+0.0       ! r0 for shell 2 (excited)
+1000.0       ! V0 for shell 3 (excited)
+0.5       ! r0 for shell 3 (excited)

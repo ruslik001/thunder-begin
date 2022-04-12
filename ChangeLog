@@ -1,0 +1,7 @@
+2016-06-01 Transition to compilation by libraries
+
+	On travis, compilations using libraries are being tested
+	This is part of a smooth transition to compiling the drivers
+	using precompiled libraries instead of directly from sources.
+	
+

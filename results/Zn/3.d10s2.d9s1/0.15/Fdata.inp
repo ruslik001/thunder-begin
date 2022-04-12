@@ -1,0 +1,3 @@
+1	! Number of species
+30	! Atomic number (list line by line according to number of species)
+Fdata	! Location of the Fdata input/output (generally symbolically linked to /Fdata)

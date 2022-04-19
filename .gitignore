@@ -37,3 +37,15 @@
 results
 *.DS_Store
 autom4te.cache
+src/a.GLOBAL
+src/b.FUNCTIONS
+src/c.SYSTEM
+src/f.MPI
+src/g.XC_FUNCTIONALS
+src/include
+src/j.ASSEMBLERS
+src/libs
+src/MACHINES
+src/Makefile.in
+src/o.OUTPUT
+src/p.THEORY

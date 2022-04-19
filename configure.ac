@@ -1,8 +1,7 @@
 #                                               -*- Autoconf -*-
 # Process this file with autoconf to produce a configure script.
-
 AC_PREREQ([2.69])
-AC_INIT([fireball-begin], [1.0], [gufranco@mail.wvu.edu])
+AC_INIT([thunder-begin], [1.0], [james.p.lewis.phd@gmail.com])
 AC_CONFIG_SRCDIR([src/include/constants.h])
 AC_CONFIG_HEADERS([config.h])
 
@@ -72,13 +71,10 @@ AC_SUBST([XC],[${XC}])
 
 dnl MACHINE
 AC_ARG_ENABLE([MACHINE],
-    AS_HELP_STRING([--enable-MACHINE=[ARG]], [Select MACHINE (GENERIC (default), FIREBALL, SPRUCE, etc) ]))
+    AS_HELP_STRING([--enable-MACHINE=[ARG]], [Select MACHINE (GENERIC (default), HKQAI, etc.) ]))
 MACHINE=GENERIC
-AS_IF([test "x$enable_MACHINE" = "xFIREBALL"], [
-  MACHINE=FIREBALL
-])
-AS_IF([test "x$enable_MACHINE" = "xSPRUCE"], [
-  MACHINE=SPRUCE
+AS_IF([test "x$enable_MACHINE" = "xHKQAI"], [
+  MACHINE=HKQAI
 ])
 AC_SUBST([MACHINE],[${MACHINE}])
 
@@ -159,7 +155,6 @@ echo \
 "-------------------------------------------------
 
  ${PACKAGE_NAME} Version ${PACKAGE_VERSION}
-
  Prefix: '${prefix}'.
  Compiler: '${FC} ${FCFLAGS} ${CPPFLAGS}'
 

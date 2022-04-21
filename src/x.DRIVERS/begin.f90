@@ -50,6 +50,9 @@
 ! ===========================================================================
         program begin
 
+! /GLOBAL
+        use M_welcome
+
 ! /SYSTEM
         use M_species
         use M_atom_functions

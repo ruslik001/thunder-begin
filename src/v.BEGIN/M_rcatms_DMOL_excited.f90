@@ -55,10 +55,14 @@
 ! Module Declaration
 ! ===========================================================================
         module M_rcatms_excited
+
+! /SYSTEM
         use M_species
         use M_atom_functions
         use M_atomPP_functions
         use M_atomPP_ion_functions
+
+! /BEGIN
         use M_psi
         use M_rcatms_Coulomb_ion
 

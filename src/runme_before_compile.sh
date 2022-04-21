@@ -1,8 +1,7 @@
 #!/bin/bash
 MASTER=thunder-master
 
-#for i in a.GLOBAL b.FUNCTIONS c.SYSTEM f.MPI g.XC_FUNCTIONALS j.ASSEMBLERS p.THEORY o.OUTPUT include Makefile MACHINES libs
-for i in Makefile MACHINES
+for i in include a.GLOBAL b.FUNCTIONS c.SYSTEM g.XC_FUNCTIONALS p.THEORY Makefile MACHINES
 do
     if [ -e $i ]
     then

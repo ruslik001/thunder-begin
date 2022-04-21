@@ -201,12 +201,12 @@
 ! Case 2: there are two shells - s and p
 ! ===========================================================================
           else if (species(ispecies)%nssh .eq. 2) then
-             write(*,*) 'Case 2: there are two shells - s and p'
+             write (ilogfile, *) 'Case 2: there are two shells - s and p'
+
 ! Now start looping over the different cutoffs.
 ! We start with the initial cutoff provided by the looprc input files.
 ! We end with the maximum cutoff provided by the looprc input files.
             do while (rc_min(ispecies) .le. rc_max(ispecies))
-               write(*,*) 'rc_min', rc_min(ispecies)
               ! Set up initial cutoffs
               do issh = 1, species(ispecies)%nssh
                 species(ispecies)%shell(issh)%rcutoff = rc_min(ispecies)
@@ -214,14 +214,12 @@
 
               ! looping over the p states
               do while (species(ispecies)%shell(2)%rcutoff .le. rc_min(ispecies) + 0.8d0)
-                 write(*,*) 'Species=', ispecies,' Rcutoff=', species(ispecies)%shell(2)%rcutoff
                 write (ilogfile,*) ' New cutoffs = ',                        &
      &            species(ispecies)%shell(1)%rcutoff,                        &
      &            species(ispecies)%shell(2)%rcutoff
 
 ! Find the maximum cutoff
                 do issh = 1, species(ispecies)%nssh
-                   write(*,*) issh
                   rcbohr = species(ispecies)%shell(issh)%rcutoff
                   species(ispecies)%rcutoff_max = max(rcbohr, species(ispecies)%rcutoff_max)
                 end do

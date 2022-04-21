@@ -52,6 +52,9 @@
 ! ===========================================================================
         program begin_looprc
 
+! /GLOBAL
+        use M_welcome
+
 ! /SYSTEM
         use M_species
         use M_atom_functions
@@ -97,8 +100,8 @@
 ! ===========================================================================
         call cpu_time (time_begin)
         open (unit = ilogfile, file = 'output.log', status = 'replace')
+        call banner
         call welcome_begin
-        call welcome
 
 ! ===========================================================================
 ! ---------------------------------------------------------------------------
@@ -143,7 +146,8 @@
         call read_vPP
 
         do ispecies = 1, nspecies
-           write(*,*) 'Computing for species', ispecies
+          write (ilogfile, *) 'Computing for species', ispecies
+
 ! Open the eigenfile for output
           open (unit = 31, file = eigfile(ispecies), status = 'unknown')
           write (31, 101)
@@ -167,7 +171,8 @@
 ! Case 1: there is only one shell - s only
 ! ===========================================================================
           if (species(ispecies)%nssh .eq. 1) then
-             write(*,*) 'Case 1: there is only one shell - s only'
+             write (ilogfile, *) ' Case 1: there is only one shell - s only'
+
 ! Now start looping over the different cutoffs.
 ! We start with the initial cutoff provided by the looprc input files.
 ! We end with the maximum cutoff provided by the looprc input files.

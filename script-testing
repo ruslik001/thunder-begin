@@ -15,3 +15,5 @@ rm output.log
 cd ../../Au/3t.d9s1.d9s1
 ./begin-looprc.x
 diff 079.eig ../../../results/Au/3t.d9s1.d9s1/079.eig
+rm 079.eig
+rm output.log

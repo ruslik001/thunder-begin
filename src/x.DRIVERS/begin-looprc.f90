@@ -272,7 +272,6 @@
 
               ! looping over the p states
               do while (species(ispecies)%shell(2)%rcutoff .le. rc_min(ispecies) + 0.8d0)
-                 write(*,*) 'Loop', species(ispecies)%shell(2)%rcutoff
 
                 ! looping over the d states
                 species(ispecies)%shell(3)%rcutoff = species(ispecies)%shell(3)%rcutoff - 0.8d0

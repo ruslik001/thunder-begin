@@ -1,0 +1,17 @@
+# This is a script for testing the begin.x and begin-looprc.x builds
+cd src
+./runme_before_compile.sh
+make begin-looprc.x
+cd ../tests/H/3.s1.s1
+./begin-looprc.x
+diff 001.eig ../../../results/H/3.s1.s1/001.eig
+rm 001.eig 
+rm output.log
+cd ../../N/3.s2p3.s1p2
+./begin-looprc.x
+diff 007.eig ../../../results/N/3.s2p3.s1p2/007.eig
+rm 007.eig
+rm output.log
+cd ../../Au/3t.d9s1.d9s1
+./begin-looprc.x
+diff 079.eig ../../../results/Au/3t.d9s1.d9s1/079.eig

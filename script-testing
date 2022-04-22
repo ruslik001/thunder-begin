@@ -1,19 +1,77 @@
 # This is a script for testing the begin.x and begin-looprc.x builds
+# First make the executables. This script works for the XC=3 (LDA) build
 cd src
 ./runme_before_compile.sh
+make begin.x
 make begin-looprc.x
+# Test hydrogen
 cd ../tests/H/3.s1.s1
 ./begin-looprc.x
 diff 001.eig ../../../results/H/3.s1.s1/001.eig
-rm 001.eig 
-rm output.log
+rm 001.eig output.log
+cd 0.10
+./begin.x
+diff 001.na.dat ../../../../results/H/3.s1.s1/0.10/001.na.dat
+diff 001.na-s0.dat ../../../../results/H/3.s1.s1/0.10/001.na-s0.dat
+diff 001.wf-s0.dat ../../../../results/H/3.s1.s1/0.10/001.wf-s0.dat
+diff create.inp ../../../../results/H/3.s1.s1/0.10/create.inp
+diff H-create.inp ../../../../results/H/3.s1.s1/0.10/H-create.inp
+rm 001.na.dat 001.na-s0.dat 001.wf-s0.dat create.inp H-create.inp output.log
+cd ../0.15
+./begin.x
+diff 001.na.dat ../../../../results/H/3.s1.s1/0.15/001.na.dat
+diff 001.na-s0.dat ../../../../results/H/3.s1.s1/0.15/001.na-s0.dat
+diff 001.wf-s0.dat ../../../../results/H/3.s1.s1/0.15/001.wf-s0.dat
+diff create.inp ../../../../results/H/3.s1.s1/0.15/create.inp
+diff H-create.inp ../../../../results/H/3.s1.s1/0.15/H-create.inp
+rm 001.na.dat 001.na-s0.dat 001.wf-s0.dat create.inp H-create.inp output.log
+# Test nitrogen
 cd ../../N/3.s2p3.s1p2
 ./begin-looprc.x
 diff 007.eig ../../../results/N/3.s2p3.s1p2/007.eig
-rm 007.eig
-rm output.log
+rm 007.eig output.log
+cd 0.10
+./begin.x
+diff 007.na.dat ../../../../results/N/3.s2p3.s1p2/0.10/007.na.dat
+diff 007.na-s0.dat ../../../../results/N/3.s2p3.s1p2/0.10/007.na-s0.dat
+diff 007.na-p0.dat ../../../../results/N/3.s2p3.s1p2/0.10/007.na-p0.dat
+diff 007.na-d0.dat ../../../../results/N/3.s2p3.s1p2/0.10/007.na-d0.dat
+diff 007.na-s1.dat ../../../../results/N/3.s2p3.s1p2/0.10/007.na-s1.dat
+diff 007.na-p1.dat ../../../../results/N/3.s2p3.s1p2/0.10/007.na-p1.dat
+diff 007.wf-s0.dat ../../../../results/N/3.s2p3.s1p2/0.10/007.wf-s0.dat
+diff 007.wf-p0.dat ../../../../results/N/3.s2p3.s1p2/0.10/007.wf-p0.dat
+diff 007.wf-d0.dat ../../../../results/N/3.s2p3.s1p2/0.10/007.wf-d0.dat
+diff 007.wf-s1.dat ../../../../results/N/3.s2p3.s1p2/0.10/007.wf-s1.dat
+diff 007.wf-p1.dat ../../../../results/N/3.s2p3.s1p2/0.10/007.wf-p1.dat
+diff 007.wf-d1.dat ../../../../results/N/3.s2p3.s1p2/0.10/007.wf-d1.dat
+diff create.inp ../../../../results/N/3.s2p3.s1p2/0.10/create.inp
+diff N-create.inp ../../../../results/N/3.s2p3.s1p2/0.10/N-create.inp
+rm create.inp N-create.inp output.log
+rm 007.na.dat 007.na-s0.dat 007.wf-s0.dat 007.na-s1.dat 007.wf-s1.dat 
+rm 007.na-p0.dat 007.wf-p0.dat 007.na-p1.dat 007.wf-p1.dat
+rm 007.na-d0.dat 007.wf-d0.dat 007.na-d1.dat 007.wf-d1.dat
+cd ../0.11
+./begin.x
+diff 007.na.dat ../../../../results/N/3.s2p3.s1p2/0.11/007.na.dat
+diff 007.na-s0.dat ../../../../results/N/3.s2p3.s1p2/0.11/007.na-s0.dat
+diff 007.na-p0.dat ../../../../results/N/3.s2p3.s1p2/0.11/007.na-p0.dat
+diff 007.na-d0.dat ../../../../results/N/3.s2p3.s1p2/0.11/007.na-d0.dat
+diff 007.na-s1.dat ../../../../results/N/3.s2p3.s1p2/0.11/007.na-s1.dat
+diff 007.na-p1.dat ../../../../results/N/3.s2p3.s1p2/0.11/007.na-p1.dat
+diff 007.wf-s0.dat ../../../../results/N/3.s2p3.s1p2/0.11/007.wf-s0.dat
+diff 007.wf-p0.dat ../../../../results/N/3.s2p3.s1p2/0.11/007.wf-p0.dat
+diff 007.wf-d0.dat ../../../../results/N/3.s2p3.s1p2/0.11/007.wf-d0.dat
+diff 007.wf-s1.dat ../../../../results/N/3.s2p3.s1p2/0.11/007.wf-s1.dat
+diff 007.wf-p1.dat ../../../../results/N/3.s2p3.s1p2/0.11/007.wf-p1.dat
+diff 007.wf-d1.dat ../../../../results/N/3.s2p3.s1p2/0.11/007.wf-d1.dat
+diff create.inp ../../../../results/N/3.s2p3.s1p2/0.11/create.inp
+diff N-create.inp ../../../../results/N/3.s2p3.s1p2/0.11/N-create.inp
+rm create.inp N-create.inp output.log
+rm 007.na.dat 007.na-s0.dat 007.wf-s0.dat 007.na-s1.dat 007.wf-s1.dat
+rm 007.na-p0.dat 007.wf-p0.dat 007.na-p1.dat 007.wf-p1.dat
+rm 007.na-d0.dat 007.wf-d0.dat 007.na-d1.dat 007.wf-d1.dat
+
 cd ../../Au/3t.d9s1.d9s1
 ./begin-looprc.x
 diff 079.eig ../../../results/Au/3t.d9s1.d9s1/079.eig
-rm 079.eig
-rm output.log
+rm 079.eig output.log

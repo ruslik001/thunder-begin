@@ -1,22 +1,19 @@
 ! copyright info:
 !
-!                             @Copyright 2022
+!                             @Copyright 2013
 !                           Fireball Committee
-! Hong Kong Quantum AI Laboratory, Ltd. - James P. Lewis, Chair
+! West Virginia University - James P. Lewis, Chair
+! Arizona State University - Otto F. Sankey
 ! Universidad de Madrid - Jose Ortega
 ! Academy of Sciences of the Czech Republic - Pavel Jelinek
-! Arizona State University - Otto F. Sankey
 
 ! Previous and/or current contributors:
 ! Auburn University - Jian Jun Dong
-! California Institute of Technology - Brandon Keith
-! Czech Institute of Physics - Prokop Hapala
-! Czech Institute of Physics - Vladimír Zobač
+! Caltech - Brandon Keith
 ! Dublin Institute of Technology - Barry Haycock
 ! Pacific Northwest National Laboratory - Kurt Glaesemann
 ! University of Texas at Austin - Alex Demkov
 ! Ohio University - Dave Drabold
-! Synfuels China Technology Co., Ltd. - Pengju Ren
 ! Washington University - Pete Fedders
 ! West Virginia University - Ning Ma and Hao Wang
 ! also Gary Adams, Juergen Frisch, John Tomfohr, Kevin Schmidt,
@@ -203,7 +200,6 @@
 
 ! Format Statements
 ! ===========================================================================
-! None
         return
         end subroutine calculate_psi
 
@@ -326,7 +322,6 @@
 
 ! Format Statements
 ! ===========================================================================
-! None
       return
       end subroutine integrate_hpsi
 
@@ -454,12 +449,11 @@
         end subroutine get_psi
 
 ! ===========================================================================
-! orthogonalize_psi
+! orthogonalize.f90
 ! ===========================================================================
 ! Subroutine Description
 ! ===========================================================================
-!       This routine will orthogonalioze one wavefunction to another.
-!
+!      This routine will orthogonalioze one wavefunction to another.
 ! ===========================================================================
 ! Subroutine Declaration
 ! ===========================================================================
@@ -558,10 +552,8 @@
 ! Format Statements
 ! ===========================================================================
 101     format (2x, ' NORM (shell = ', i1, ') = ', f16.12)
-
         return
         end subroutine orthogonalize_psi
-
 
 ! End Module
 ! ===========================================================================

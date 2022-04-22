@@ -463,20 +463,20 @@
 ! ===========================================================================
 ! Subroutine Declaration
 ! ===========================================================================
-        subroutine destroy_na (ispecies)
+        subroutine destroy_na (nspecies)
         implicit none
 
 ! Argument Declaration and Description
 ! ===========================================================================
 ! Input
-        integer, intent (in) :: ispecies
+        integer, intent (in) :: nspecies
 
 ! Local Parameters and Data Declaration
 ! ===========================================================================
 
 ! Local Variable Declaration and Description
 ! ===========================================================================
-! None
+        integer ispecies
 
 ! Allocate Arrays
 ! ===========================================================================
@@ -488,8 +488,9 @@
 
 ! Deallocate Arrays
 ! ===========================================================================
-        if (.FALSE.) write(*,*) ispecies
-        deallocate (na(ispecies)%r)
+        do ispecies = 1, nspecies
+          deallocate (na(ispecies)%r)
+        end do
 
 ! Format Statements
 ! ===========================================================================

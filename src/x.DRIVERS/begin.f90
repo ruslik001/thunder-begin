@@ -125,18 +125,17 @@
           if (species(ispecies)%nexcite .eq. 0) then
             call calculate_rcatm (ispecies)
             call writeout_wf (ispecies)
-            call destroy_rcatm (ispecies)
 
 ! nexcite = 1: find the ground state, psi with DMOL formalism, orthogonalize
           else if (species(ispecies)%nexcite .eq. 1) then
             call calculate_rcatm (ispecies)
             call writeout_wf (ispecies)
             call calculate_rcatm_excited (ispecies)
-
-            call destroy_rcatm (ispecies)
-            call destroy_rcatm_excited (ispecies)
           end if
         end do
+        call destroy_rcatm (nspecies)
+        if (species(nspecies)%nexcite .eq. 1)                                & 
+          call destroy_rcatm_excited (nspecies)
 
 ! ===========================================================================
 ! ---------------------------------------------------------------------------
@@ -150,8 +149,8 @@
 ! Loop over the number of species
         do ispecies = 1, nspecies
           call calculate_vnn (ispecies)
-          call destroy_na (ispecies)
         end do
+        call destroy_na (nspecies)
 
         call cpu_time (time_end)
         write (ilogfile,*)

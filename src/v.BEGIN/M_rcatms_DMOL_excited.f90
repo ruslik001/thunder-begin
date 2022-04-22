@@ -783,20 +783,20 @@
 ! ===========================================================================
 ! Subroutine Declaration
 ! ===========================================================================
-        subroutine destroy_rcatm_excited (ispecies)
+        subroutine destroy_rcatm_excited (nspecies)
         implicit none
 
 ! Argument Declaration and Description
 ! ===========================================================================
 ! Input
-        integer, intent (in) :: ispecies
+        integer, intent (in) :: nspecies
 
 ! Local Parameters and Data Declaration
 ! ===========================================================================
 
 ! Local Variable Declaration and Description
 ! ===========================================================================
-! None
+        integer ispecies
 
 ! Allocate Arrays
 ! ===========================================================================
@@ -808,13 +808,13 @@
 
 ! Deallocate Arrays
 ! ===========================================================================
-        write(*,*) ispecies
-        deallocate (wf_ion(ispecies)%r)
-        deallocate (wf_ion(ispecies)%rho)
-        deallocate (wf_ion(ispecies)%sigma)
-        deallocate (wf_ion(ispecies)%vee)
-        deallocate (wf_ion(ispecies)%vxc)
-
+        do ispecies = 1, nspecies
+          deallocate (wf_ion(ispecies)%r)
+          deallocate (wf_ion(ispecies)%rho)
+          deallocate (wf_ion(ispecies)%sigma)
+          deallocate (wf_ion(ispecies)%vee)
+          deallocate (wf_ion(ispecies)%vxc)
+        end do
         deallocate (vconfine_excited)
 
 ! Format Statements

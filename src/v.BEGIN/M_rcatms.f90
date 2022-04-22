@@ -1005,20 +1005,20 @@
 ! ===========================================================================
 ! Subroutine Declaration
 ! ===========================================================================
-        subroutine destroy_rcatm (ispecies)
+        subroutine destroy_rcatm (nspecies)
         implicit none
 
 ! Argument Declaration and Description
 ! ===========================================================================
 ! Input
-        integer, intent (in) :: ispecies
+        integer, intent (in) :: nspecies
 
 ! Local Parameters and Data Declaration
 ! ===========================================================================
 
 ! Local Variable Declaration and Description
 ! ===========================================================================
-! None
+        integer ispecies
 
 ! Allocate Arrays
 ! ===========================================================================
@@ -1030,17 +1030,16 @@
 
 ! Deallocate Arrays
 ! ===========================================================================
-        if (.FALSE.) write(*,*) ispecies
+        do ispecies = 1, nspecies
+          deallocate (wf(ispecies)%r)
+          deallocate (wf(ispecies)%rho)
+          deallocate (wf(ispecies)%sigma)
+          deallocate (wf(ispecies)%vee)
+          deallocate (wf(ispecies)%vxc)
 
-        deallocate (wf(ispecies)%r)
-        deallocate (wf(ispecies)%rho)
-        deallocate (wf(ispecies)%sigma)
-        deallocate (wf(ispecies)%vee)
-        deallocate (wf(ispecies)%vxc)
-
-        deallocate (species_PP(ispecies)%vc)
-        deallocate (species_PP(ispecies)%vnl)
-
+          deallocate (species_PP(ispecies)%vc)
+          deallocate (species_PP(ispecies)%vnl)
+        end do
         deallocate (vconfine)
 
 ! Format Statements

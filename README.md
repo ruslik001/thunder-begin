@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.org/fireball-dft/fireball-begin.svg?branch=master)](https://travis-ci.org/fireball-dft/fireball-begin)
-
 # thunder-begin                                                                                                                        
                                                                                                                                                                                   
 This repository contains the sources to create two drivers:                                                                                                                                                                          

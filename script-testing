@@ -17,6 +17,8 @@ diff 001.wf-s0.dat ../../../../results/H/3.s1.s1/0.10/001.wf-s0.dat
 diff create.inp ../../../../results/H/3.s1.s1/0.10/create.inp
 diff H-create.inp ../../../../results/H/3.s1.s1/0.10/H-create.inp
 rm 001.na.dat 001.na-s0.dat 001.wf-s0.dat create.inp H-create.inp output.log
+rm Fdata/clPP.01.dat
+rm Fdata/basis/*415.*
 cd ../0.15
 ./begin.x
 diff 001.na.dat ../../../../results/H/3.s1.s1/0.15/001.na.dat
@@ -25,8 +27,10 @@ diff 001.wf-s0.dat ../../../../results/H/3.s1.s1/0.15/001.wf-s0.dat
 diff create.inp ../../../../results/H/3.s1.s1/0.15/create.inp
 diff H-create.inp ../../../../results/H/3.s1.s1/0.15/H-create.inp
 rm 001.na.dat 001.na-s0.dat 001.wf-s0.dat create.inp H-create.inp output.log
+rm Fdata/clPP.01.dat
+rm Fdata/basis/*375.*
 # Test nitrogen
-cd ../../N/3.s2p3.s1p2
+cd ../../../N/3.s2p3.s1p2
 ./begin-looprc.x
 diff 007.eig ../../../results/N/3.s2p3.s1p2/007.eig
 rm 007.eig output.log
@@ -43,13 +47,14 @@ diff 007.wf-p0.dat ../../../../results/N/3.s2p3.s1p2/0.10/007.wf-p0.dat
 diff 007.wf-d0.dat ../../../../results/N/3.s2p3.s1p2/0.10/007.wf-d0.dat
 diff 007.wf-s1.dat ../../../../results/N/3.s2p3.s1p2/0.10/007.wf-s1.dat
 diff 007.wf-p1.dat ../../../../results/N/3.s2p3.s1p2/0.10/007.wf-p1.dat
-diff 007.wf-d1.dat ../../../../results/N/3.s2p3.s1p2/0.10/007.wf-d1.dat
 diff create.inp ../../../../results/N/3.s2p3.s1p2/0.10/create.inp
 diff N-create.inp ../../../../results/N/3.s2p3.s1p2/0.10/N-create.inp
 rm create.inp N-create.inp output.log
 rm 007.na.dat 007.na-s0.dat 007.wf-s0.dat 007.na-s1.dat 007.wf-s1.dat 
 rm 007.na-p0.dat 007.wf-p0.dat 007.na-p1.dat 007.wf-p1.dat
 rm 007.na-d0.dat 007.wf-d0.dat 007.na-d1.dat 007.wf-d1.dat
+rm Fdata/clPP.07.dat
+rm Fdata/basis/*380* Fdata/basis/*445*
 cd ../0.11
 ./begin.x
 diff 007.na.dat ../../../../results/N/3.s2p3.s1p2/0.11/007.na.dat
@@ -63,15 +68,91 @@ diff 007.wf-p0.dat ../../../../results/N/3.s2p3.s1p2/0.11/007.wf-p0.dat
 diff 007.wf-d0.dat ../../../../results/N/3.s2p3.s1p2/0.11/007.wf-d0.dat
 diff 007.wf-s1.dat ../../../../results/N/3.s2p3.s1p2/0.11/007.wf-s1.dat
 diff 007.wf-p1.dat ../../../../results/N/3.s2p3.s1p2/0.11/007.wf-p1.dat
-diff 007.wf-d1.dat ../../../../results/N/3.s2p3.s1p2/0.11/007.wf-d1.dat
 diff create.inp ../../../../results/N/3.s2p3.s1p2/0.11/create.inp
 diff N-create.inp ../../../../results/N/3.s2p3.s1p2/0.11/N-create.inp
 rm create.inp N-create.inp output.log
 rm 007.na.dat 007.na-s0.dat 007.wf-s0.dat 007.na-s1.dat 007.wf-s1.dat
 rm 007.na-p0.dat 007.wf-p0.dat 007.na-p1.dat 007.wf-p1.dat
 rm 007.na-d0.dat 007.wf-d0.dat 007.na-d1.dat 007.wf-d1.dat
-
-cd ../../Au/3t.d9s1.d9s1
+rm Fdata/clPP.07.dat
+rm Fdata/basis/*375* Fdata/basis/*440*
+cd ../0.15
+./begin.x
+diff 007.na.dat ../../../../results/N/3.s2p3.s1p2/0.15/007.na.dat
+diff 007.na-s0.dat ../../../../results/N/3.s2p3.s1p2/0.15/007.na-s0.dat
+diff 007.na-p0.dat ../../../../results/N/3.s2p3.s1p2/0.15/007.na-p0.dat
+diff 007.na-d0.dat ../../../../results/N/3.s2p3.s1p2/0.15/007.na-d0.dat
+diff 007.na-s1.dat ../../../../results/N/3.s2p3.s1p2/0.15/007.na-s1.dat
+diff 007.na-p1.dat ../../../../results/N/3.s2p3.s1p2/0.15/007.na-p1.dat
+diff 007.wf-s0.dat ../../../../results/N/3.s2p3.s1p2/0.15/007.wf-s0.dat
+diff 007.wf-p0.dat ../../../../results/N/3.s2p3.s1p2/0.15/007.wf-p0.dat
+diff 007.wf-d0.dat ../../../../results/N/3.s2p3.s1p2/0.15/007.wf-d0.dat
+diff 007.wf-s1.dat ../../../../results/N/3.s2p3.s1p2/0.15/007.wf-s1.dat
+diff 007.wf-p1.dat ../../../../results/N/3.s2p3.s1p2/0.15/007.wf-p1.dat
+diff create.inp ../../../../results/N/3.s2p3.s1p2/0.15/create.inp
+diff N-create.inp ../../../../results/N/3.s2p3.s1p2/0.15/N-create.inp
+rm create.inp N-create.inp output.log
+rm 007.na.dat 007.na-s0.dat 007.wf-s0.dat 007.na-s1.dat 007.wf-s1.dat
+rm 007.na-p0.dat 007.wf-p0.dat 007.na-p1.dat 007.wf-p1.dat
+rm 007.na-d0.dat 007.wf-d0.dat 007.na-d1.dat 007.wf-d1.dat
+rm Fdata/clPP.07.dat
+rm Fdata/basis/*365* Fdata/basis/*410*
+# Test gold
+cd ../../../Au/3t.d9s1.d9s1
 ./begin-looprc.x
 diff 079.eig ../../../results/Au/3t.d9s1.d9s1/079.eig
 rm 079.eig output.log
+cd 0.10
+./begin.x
+diff 079.na.dat ../../../../results/Au/3t.d9s1.d9s1/0.10/079.na.dat
+diff 079.na-s0.dat ../../../../results/Au/3t.d9s1.d9s1/0.10/079.na-s0.dat
+diff 079.na-p0.dat ../../../../results/Au/3t.d9s1.d9s1/0.10/079.na-p0.dat
+diff 079.na-d0.dat ../../../../results/Au/3t.d9s1.d9s1/0.10/079.na-d0.dat
+diff 079.wf-s0.dat ../../../../results/Au/3t.d9s1.d9s1/0.10/079.wf-s0.dat
+diff 079.wf-p0.dat ../../../../results/Au/3t.d9s1.d9s1/0.10/079.wf-p0.dat
+diff 079.wf-d0.dat ../../../../results/Au/3t.d9s1.d9s1/0.10/079.wf-d0.dat
+diff 079.wf-d1.dat ../../../../results/Au/3t.d9s1.d9s1/0.10/079.wf-d1.dat
+diff create.inp ../../../../results/Au/3t.d9s1.d9s1/0.10/create.inp
+diff Au-create.inp ../../../../results/Au/3t.d9s1.d9s1/0.10/Au-create.inp
+rm create.inp Au-create.inp output.log
+rm 079.na.dat 079.na-s0.dat 079.wf-s0.dat 079.na-s1.dat 079.wf-s1.dat
+rm 079.na-p0.dat 079.wf-p0.dat 079.na-p1.dat 079.wf-p1.dat
+rm 079.na-d0.dat 079.wf-d0.dat 079.na-d1.dat 079.wf-d1.dat
+rm Fdata/clPP.79.dat
+rm Fdata/basis/*505* Fdata/basis/*545* Fdata/basis/*585*
+cd ../0.11
+./begin.x
+diff 079.na.dat ../../../../results/Au/3t.d9s1.d9s1/0.11/079.na.dat
+diff 079.na-s0.dat ../../../../results/Au/3t.d9s1.d9s1/0.11/079.na-s0.dat
+diff 079.na-p0.dat ../../../../results/Au/3t.d9s1.d9s1/0.11/079.na-p0.dat
+diff 079.na-d0.dat ../../../../results/Au/3t.d9s1.d9s1/0.11/079.na-d0.dat
+diff 079.wf-s0.dat ../../../../results/Au/3t.d9s1.d9s1/0.11/079.wf-s0.dat
+diff 079.wf-p0.dat ../../../../results/Au/3t.d9s1.d9s1/0.11/079.wf-p0.dat
+diff 079.wf-d0.dat ../../../../results/Au/3t.d9s1.d9s1/0.11/079.wf-d0.dat
+diff 079.wf-d1.dat ../../../../results/Au/3t.d9s1.d9s1/0.11/079.wf-d1.dat
+diff create.inp ../../../../results/Au/3t.d9s1.d9s1/0.11/create.inp
+diff Au-create.inp ../../../../results/Au/3t.d9s1.d9s1/0.11/Au-create.inp
+rm create.inp Au-create.inp output.log
+rm 079.na.dat 079.na-s0.dat 079.wf-s0.dat 079.na-s1.dat 079.wf-s1.dat
+rm 079.na-p0.dat 079.wf-p0.dat 079.na-p1.dat 079.wf-p1.dat
+rm 079.na-d0.dat 079.wf-d0.dat 079.na-d1.dat 079.wf-d1.dat
+rm Fdata/clPP.79.dat
+rm Fdata/basis/*495* Fdata/basis/*535* Fdata/basis/*575*
+cd ../0.15
+./begin.x
+diff 079.na.dat ../../../../results/Au/3t.d9s1.d9s1/0.15/079.na.dat
+diff 079.na-s0.dat ../../../../results/Au/3t.d9s1.d9s1/0.15/079.na-s0.dat
+diff 079.na-p0.dat ../../../../results/Au/3t.d9s1.d9s1/0.15/079.na-p0.dat
+diff 079.na-d0.dat ../../../../results/Au/3t.d9s1.d9s1/0.15/079.na-d0.dat
+diff 079.wf-s0.dat ../../../../results/Au/3t.d9s1.d9s1/0.15/079.wf-s0.dat
+diff 079.wf-p0.dat ../../../../results/Au/3t.d9s1.d9s1/0.15/079.wf-p0.dat
+diff 079.wf-d0.dat ../../../../results/Au/3t.d9s1.d9s1/0.15/079.wf-d0.dat
+diff 079.wf-d1.dat ../../../../results/Au/3t.d9s1.d9s1/0.15/079.wf-d1.dat
+diff create.inp ../../../../results/Au/3t.d9s1.d9s1/0.15/create.inp
+diff Au-create.inp ../../../../results/Au/3t.d9s1.d9s1/0.15/Au-create.inp
+rm create.inp Au-create.inp output.log
+rm 079.na.dat 079.na-s0.dat 079.wf-s0.dat 079.na-s1.dat 079.wf-s1.dat
+rm 079.na-p0.dat 079.wf-p0.dat 079.na-p1.dat 079.wf-p1.dat
+rm 079.na-d0.dat 079.wf-d0.dat 079.na-d1.dat 079.wf-d1.dat
+rm Fdata/clPP.79.dat
+rm Fdata/basis/*465* Fdata/basis/*510* Fdata/basis/*550*

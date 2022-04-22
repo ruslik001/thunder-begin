@@ -1,19 +1,22 @@
 ! copyright info:
 !
-!                             @Copyright 2013
+!                             @Copyright 2022
 !                           Fireball Committee
-! West Virginia University - James P. Lewis, Chair
-! Arizona State University - Otto F. Sankey
+! Hong Kong Quantum AI Laboratory, Ltd. - James P. Lewis, Chair
 ! Universidad de Madrid - Jose Ortega
 ! Academy of Sciences of the Czech Republic - Pavel Jelinek
+! Arizona State University - Otto F. Sankey
 
 ! Previous and/or current contributors:
 ! Auburn University - Jian Jun Dong
-! Caltech - Brandon Keith
+! California Institute of Technology - Brandon Keith
+! Czech Institute of Physics - Prokop Hapala
+! Czech Institute of Physics - Vladimír Zobač
 ! Dublin Institute of Technology - Barry Haycock
 ! Pacific Northwest National Laboratory - Kurt Glaesemann
 ! University of Texas at Austin - Alex Demkov
 ! Ohio University - Dave Drabold
+! Synfuels China Technology Co., Ltd. - Pengju Ren
 ! Washington University - Pete Fedders
 ! West Virginia University - Ning Ma and Hao Wang
 ! also Gary Adams, Juergen Frisch, John Tomfohr, Kevin Schmidt,
@@ -1002,20 +1005,20 @@
 ! ===========================================================================
 ! Subroutine Declaration
 ! ===========================================================================
-        subroutine destroy_rcatm (ispecies)
+        subroutine destroy_rcatm (nspecies)
         implicit none
 
 ! Argument Declaration and Description
 ! ===========================================================================
 ! Input
-        integer, intent (in) :: ispecies
+        integer, intent (in) :: nspecies
 
 ! Local Parameters and Data Declaration
 ! ===========================================================================
 
 ! Local Variable Declaration and Description
 ! ===========================================================================
-! None
+        integer ispecies
 
 ! Allocate Arrays
 ! ===========================================================================
@@ -1027,17 +1030,16 @@
 
 ! Deallocate Arrays
 ! ===========================================================================
-        if (.FALSE.) write(*,*) ispecies
+        do ispecies = 1, nspecies
+          deallocate (wf(ispecies)%r)
+          deallocate (wf(ispecies)%rho)
+          deallocate (wf(ispecies)%sigma)
+          deallocate (wf(ispecies)%vee)
+          deallocate (wf(ispecies)%vxc)
 
-        deallocate (wf(ispecies)%r)
-        deallocate (wf(ispecies)%rho)
-        deallocate (wf(ispecies)%sigma)
-        deallocate (wf(ispecies)%vee)
-        deallocate (wf(ispecies)%vxc)
-
-        deallocate (species_PP(ispecies)%vc)
-        deallocate (species_PP(ispecies)%vnl)
-
+          deallocate (species_PP(ispecies)%vc)
+          deallocate (species_PP(ispecies)%vnl)
+        end do
         deallocate (vconfine)
 
 ! Format Statements

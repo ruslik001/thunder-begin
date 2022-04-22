@@ -1,19 +1,22 @@
 ! copyright info:
 !
-!                             @Copyright 2013
+!                             @Copyright 2022
 !                           Fireball Committee
-! West Virginia University - James P. Lewis, Chair
-! Arizona State University - Otto F. Sankey
+! Hong Kong Quantum AI Laboratory, Ltd. - James P. Lewis, Chair
 ! Universidad de Madrid - Jose Ortega
 ! Academy of Sciences of the Czech Republic - Pavel Jelinek
+! Arizona State University - Otto F. Sankey
 
 ! Previous and/or current contributors:
 ! Auburn University - Jian Jun Dong
-! Caltech - Brandon Keith
+! California Institute of Technology - Brandon Keith
+! Czech Institute of Physics - Prokop Hapala
+! Czech Institute of Physics - Vladimír Zobač
 ! Dublin Institute of Technology - Barry Haycock
 ! Pacific Northwest National Laboratory - Kurt Glaesemann
 ! University of Texas at Austin - Alex Demkov
 ! Ohio University - Dave Drabold
+! Synfuels China Technology Co., Ltd. - Pengju Ren
 ! Washington University - Pete Fedders
 ! West Virginia University - Ning Ma and Hao Wang
 ! also Gary Adams, Juergen Frisch, John Tomfohr, Kevin Schmidt,
@@ -46,6 +49,9 @@
 ! Program Declaration
 ! ===========================================================================
         program begin
+
+! /GLOBAL
+        use M_welcome
 
 ! /SYSTEM
         use M_species
@@ -119,18 +125,17 @@
           if (species(ispecies)%nexcite .eq. 0) then
             call calculate_rcatm (ispecies)
             call writeout_wf (ispecies)
-            call destroy_rcatm (ispecies)
 
 ! nexcite = 1: find the ground state, psi with DMOL formalism, orthogonalize
           else if (species(ispecies)%nexcite .eq. 1) then
             call calculate_rcatm (ispecies)
             call writeout_wf (ispecies)
             call calculate_rcatm_excited (ispecies)
-
-            call destroy_rcatm (ispecies)
-            call destroy_rcatm_excited (ispecies)
           end if
         end do
+        call destroy_rcatm (nspecies)
+        if (species(nspecies)%nexcite .eq. 1)                                & 
+          call destroy_rcatm_excited (nspecies)
 
 ! ===========================================================================
 ! ---------------------------------------------------------------------------
@@ -144,8 +149,8 @@
 ! Loop over the number of species
         do ispecies = 1, nspecies
           call calculate_vnn (ispecies)
-          call destroy_na (ispecies)
         end do
+        call destroy_na (nspecies)
 
         call cpu_time (time_end)
         write (ilogfile,*)

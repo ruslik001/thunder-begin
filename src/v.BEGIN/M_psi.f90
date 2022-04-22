@@ -445,9 +445,115 @@
 ! Format Statements
 ! ===========================================================================
 ! None
-
         return
         end subroutine get_psi
+
+! ===========================================================================
+! orthogonalize.f90
+! ===========================================================================
+! Subroutine Description
+! ===========================================================================
+!      This routine will orthogonalioze one wavefunction to another.
+! ===========================================================================
+! Subroutine Declaration
+! ===========================================================================
+        subroutine orthogonalize_psi (ilogfile, issh, mesh, psi1, psi2, dr)
+        implicit none
+
+! Argument Declaration and Description
+! ===========================================================================
+! Input
+        integer, intent (in) :: ilogfile     ! output file unit number
+        integer, intent (in) :: issh         ! shell number
+        integer, intent (in) :: mesh         ! number of mesh points
+
+        real, intent (in) :: dr              ! grid spacing
+
+        real, intent (in), dimension (mesh) :: psi1
+        real, intent (inout), dimension (mesh) :: psi2
+
+! Local Parameters and Data Declaration
+! ===========================================================================
+! None
+
+! Local Variable Declaration and Description
+! ===========================================================================
+        integer ipoint
+
+        real integral                     ! answer of the psi1*psi2 integration
+        real r                            ! value of r at grid point
+        real xnorm                        ! normalization of psi2 after
+
+        real, dimension (:), allocatable :: integrand
+
+        interface
+          function simpson (mesh, integrand, dr)
+            integer, intent (in) :: mesh
+            real, intent (in), dimension (mesh) :: integrand
+            real, intent (in) :: dr
+            real simpson
+          end function simpson
+        end interface
+
+! Allocate Arrays
+! ===========================================================================
+        allocate (integrand (mesh))
+
+! Procedure
+! ===========================================================================
+! First step - integrate the two wavefunctions together.
+! The goal is that int(psi1*psi2) = 0 in the end.
+        r = - dr
+        do ipoint = 1, mesh
+          r = r + dr
+          integrand(ipoint) = psi1(ipoint)*psi2(ipoint)
+        end do
+        integral = simpson (mesh, integrand, dr)
+
+! Now orthogonalize the excited state wavefunction (psi2) in a Gram-Schmidt
+! orthogonalization algorithm.
+        psi2 = psi2 - integral*psi1
+
+! Normalization
+        r = - dr
+        do ipoint = 1, mesh
+          r = r + dr
+          integrand(ipoint) = psi2(ipoint)**2
+        end do
+        xnorm = simpson (mesh, integrand, dr)
+        psi2 = psi2/sqrt(xnorm)
+
+! Check normalization
+        write (ilogfile,*)
+        write (ilogfile,*) ' Inside orthogonalize_psi: Checking normalization [NORM(l) should be 1]'
+        r = - dr
+        do ipoint = 1, mesh
+          r = r + dr
+          integrand(ipoint) = psi2(ipoint)**2
+        end do
+        xnorm = simpson (mesh, integrand, dr)
+        write (ilogfile,101) issh, xnorm
+
+! Check orthogonalization
+        write (ilogfile,*)
+        write (ilogfile,*) ' Inside orthogonalize_psi: Checking orthogonalization [NORM(l) should be 0]'
+        r = - dr
+        do ipoint = 1, mesh
+          r = r + dr
+          integrand(ipoint) = psi2(ipoint)*psi1(ipoint)
+        end do
+        xnorm = simpson (mesh, integrand, dr)
+        write (ilogfile,101) issh, xnorm
+
+! Deallocate Arrays
+! ===========================================================================
+        deallocate (integrand)
+
+! Format Statements
+! ===========================================================================
+101     format (2x, ' NORM (shell = ', i1, ') = ', f16.12)
+        return
+        end subroutine orthogonalize_psi
 
 ! End Module
 ! ===========================================================================

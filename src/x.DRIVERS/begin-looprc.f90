@@ -1,19 +1,22 @@
 ! copyright info:
 !
-!                             @Copyright 2013
+!                             @Copyright 2022
 !                           Fireball Committee
-! West Virginia University - James P. Lewis, Chair
-! Arizona State University - Otto F. Sankey
+! Hong Kong Quantum AI Laboratory, Ltd. - James P. Lewis, Chair
 ! Universidad de Madrid - Jose Ortega
 ! Academy of Sciences of the Czech Republic - Pavel Jelinek
+! Arizona State University - Otto F. Sankey
 
 ! Previous and/or current contributors:
 ! Auburn University - Jian Jun Dong
-! Caltech - Brandon Keith
+! California Institute of Technology - Brandon Keith
+! Czech Institute of Physics - Prokop Hapala
+! Czech Institute of Physics - Vladimír Zobač
 ! Dublin Institute of Technology - Barry Haycock
 ! Pacific Northwest National Laboratory - Kurt Glaesemann
 ! University of Texas at Austin - Alex Demkov
 ! Ohio University - Dave Drabold
+! Synfuels China Technology Co., Ltd. - Pengju Ren
 ! Washington University - Pete Fedders
 ! West Virginia University - Ning Ma and Hao Wang
 ! also Gary Adams, Juergen Frisch, John Tomfohr, Kevin Schmidt,
@@ -48,6 +51,9 @@
 ! Program Declaration
 ! ===========================================================================
         program begin_looprc
+
+! /GLOBAL
+        use M_welcome
 
 ! /SYSTEM
         use M_species
@@ -94,6 +100,7 @@
 ! ===========================================================================
         call cpu_time (time_begin)
         open (unit = ilogfile, file = 'output.log', status = 'replace')
+        call banner
         call welcome_begin
 
 ! ===========================================================================
@@ -139,7 +146,8 @@
         call read_vPP
 
         do ispecies = 1, nspecies
-           write(*,*) 'Computing for species', ispecies
+          write (ilogfile, *) 'Computing for species', ispecies
+
 ! Open the eigenfile for output
           open (unit = 31, file = eigfile(ispecies), status = 'unknown')
           write (31, 101)
@@ -163,7 +171,8 @@
 ! Case 1: there is only one shell - s only
 ! ===========================================================================
           if (species(ispecies)%nssh .eq. 1) then
-             write(*,*) 'Case 1: there is only one shell - s only'
+             write (ilogfile, *) ' Case 1: there is only one shell - s only'
+
 ! Now start looping over the different cutoffs.
 ! We start with the initial cutoff provided by the looprc input files.
 ! We end with the maximum cutoff provided by the looprc input files.
@@ -192,12 +201,12 @@
 ! Case 2: there are two shells - s and p
 ! ===========================================================================
           else if (species(ispecies)%nssh .eq. 2) then
-             write(*,*) 'Case 2: there are two shells - s and p'
+             write (ilogfile, *) 'Case 2: there are two shells - s and p'
+
 ! Now start looping over the different cutoffs.
 ! We start with the initial cutoff provided by the looprc input files.
 ! We end with the maximum cutoff provided by the looprc input files.
             do while (rc_min(ispecies) .le. rc_max(ispecies))
-               write(*,*) 'rc_min', rc_min(ispecies)
               ! Set up initial cutoffs
               do issh = 1, species(ispecies)%nssh
                 species(ispecies)%shell(issh)%rcutoff = rc_min(ispecies)
@@ -205,14 +214,12 @@
 
               ! looping over the p states
               do while (species(ispecies)%shell(2)%rcutoff .le. rc_min(ispecies) + 0.8d0)
-                 write(*,*) 'Species=', ispecies,' Rcutoff=', species(ispecies)%shell(2)%rcutoff
                 write (ilogfile,*) ' New cutoffs = ',                        &
      &            species(ispecies)%shell(1)%rcutoff,                        &
      &            species(ispecies)%shell(2)%rcutoff
 
 ! Find the maximum cutoff
                 do issh = 1, species(ispecies)%nssh
-                   write(*,*) issh
                   rcbohr = species(ispecies)%shell(issh)%rcutoff
                   species(ispecies)%rcutoff_max = max(rcbohr, species(ispecies)%rcutoff_max)
                 end do
@@ -265,7 +272,6 @@
 
               ! looping over the p states
               do while (species(ispecies)%shell(2)%rcutoff .le. rc_min(ispecies) + 0.8d0)
-                 write(*,*) 'Loop', species(ispecies)%shell(2)%rcutoff
 
                 ! looping over the d states
                 species(ispecies)%shell(3)%rcutoff = species(ispecies)%shell(3)%rcutoff - 0.8d0

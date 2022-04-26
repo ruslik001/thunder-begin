@@ -133,9 +133,7 @@
             call calculate_rcatm_excited (ispecies)
           end if
         end do
-        call destroy_rcatm (nspecies)
-        if (species(nspecies)%nexcite .eq. 1)                                & 
-          call destroy_rcatm_excited (nspecies)
+        deallocate (wf, wf_ion)
 
 ! ===========================================================================
 ! ---------------------------------------------------------------------------

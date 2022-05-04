@@ -997,6 +997,56 @@
         end subroutine writeout_wf
 
 
+! ===========================================================================
+! destroy_rcatm
+! ===========================================================================
+! Subroutine Description
+! ===========================================================================
+!
+! ===========================================================================
+! Subroutine Declaration
+! ===========================================================================
+        subroutine destroy_rcatm (ispecies)
+        implicit none
+
+! Argument Declaration and Description
+! ===========================================================================
+! Input
+        integer, intent (in) :: ispecies
+
+! Local Parameters and Data Declaration
+! ===========================================================================
+
+! Local Variable Declaration and Description
+! ===========================================================================
+! None
+
+! Allocate Arrays
+! ===========================================================================
+! None
+
+! Procedure
+! ===========================================================================
+! None
+
+! Deallocate Arrays
+! ===========================================================================
+        deallocate (wf(ispecies)%r)
+        deallocate (wf(ispecies)%rho)
+        deallocate (wf(ispecies)%sigma)
+        deallocate (wf(ispecies)%vee)
+        deallocate (wf(ispecies)%vxc)
+
+        deallocate (species_PP(ispecies)%vc)
+        deallocate (species_PP(ispecies)%vnl)
+
+! Format Statements
+! ===========================================================================
+! None
+
+        return
+        end subroutine destroy_rcatm
+
 ! End Module
 ! ===========================================================================
         end module M_rcatms

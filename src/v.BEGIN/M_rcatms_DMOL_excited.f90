@@ -248,7 +248,6 @@
         integer iexc                     ! exchange-correlation option
         integer ipoint                   ! loop over mesh points
         integer issh                     ! loop over shells
-!        integer iten, ione, itwo         ! character array places
         integer iten, ione               ! character array places
         integer inum, iremainder
         integer iteration                ! iterate to scf solution
@@ -671,6 +670,7 @@
 ! ===========================================================================
         deallocate (sigma_old)
         deallocate (v)
+        deallocate (vconfine_excited)
         deallocate (xnocc)
 
 ! Format Statements
@@ -772,57 +772,6 @@
 
         return
         end subroutine calculate_vconfine_excited
-
-
-! ===========================================================================
-! destroy_rcatm_excited
-! ===========================================================================
-! Subroutine Description
-! ===========================================================================
-!
-! ===========================================================================
-! Subroutine Declaration
-! ===========================================================================
-        subroutine destroy_rcatm_excited (nspecies)
-        implicit none
-
-! Argument Declaration and Description
-! ===========================================================================
-! Input
-        integer, intent (in) :: nspecies
-
-! Local Parameters and Data Declaration
-! ===========================================================================
-
-! Local Variable Declaration and Description
-! ===========================================================================
-        integer ispecies
-
-! Allocate Arrays
-! ===========================================================================
-! None
-
-! Procedure
-! ===========================================================================
-! None
-
-! Deallocate Arrays
-! ===========================================================================
-        do ispecies = 1, nspecies
-          deallocate (wf_ion(ispecies)%r)
-          deallocate (wf_ion(ispecies)%rho)
-          deallocate (wf_ion(ispecies)%sigma)
-          deallocate (wf_ion(ispecies)%vee)
-          deallocate (wf_ion(ispecies)%vxc)
-        end do
-        deallocate (vconfine_excited)
-
-! Format Statements
-! ===========================================================================
-! None
-
-        return
-        end subroutine destroy_rcatm_excited
 
 ! End Module
 ! ===========================================================================

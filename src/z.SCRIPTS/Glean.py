@@ -72,10 +72,10 @@ def GleanEig (argv):
             rcutoffs = line[0]
         scores.append(score)
         if score in associations:
-            print 'warning: duplicate scores for:',
-            print associations[score],
-            print rcutoffs,
-            print score
+            print ('warning: duplicate scores for:'),
+            print (associations[score]),
+            print (rcutoffs),
+            print (score)
         associations[score] = rcutoffs
 
     # Close the file
@@ -86,11 +86,11 @@ def GleanEig (argv):
 
     # Print out the results
     print
-    print 'Printing out the top 10 scoring values for the cutoff radius: '
+    print ('Printing out the top 10 scoring values for the cutoff radius: ')
     for i in range(0, 10):
-        print associations[scores[i]],
-        print '   Score: ',
-        print scores[i]
+        print (associations[scores[i]]),
+        print ('   Score: '),
+        print (scores[i])
     print
 
     # Return the best score

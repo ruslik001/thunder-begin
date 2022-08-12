@@ -59,8 +59,12 @@
 ! Module Declaration
 ! ===========================================================================
         module M_rcatms
+
+! /SYSTEM
         use M_species
         use M_atom_functions
+
+! /BEGIN
         use M_psi
         use M_rcatms_Coulomb
 

@@ -150,7 +150,7 @@
 
           do issh = 1, species(ispecies)%nssh
             lssh = species(ispecies)%shell(issh)%lssh
-            xnocc = species(ispecies)%shell(issh)%Qneutral
+            xnocc = species(ispecies)%shell(issh)%Qin
             a0 = species(ispecies)%shell(issh)%a0
 
             ! find initial values of mesh points and dr
@@ -261,7 +261,6 @@
         real vee                         ! temporary vee value
         real vxc                         ! temporary vxc value
         real xc_fraction                 ! mixing factor for exact exchange
-!       real xnorm                        ! normalization integral (= 1.0d0)
 
         real, dimension (:), allocatable :: sigma_old
         real, dimension (:), allocatable :: xnocc
@@ -269,10 +268,7 @@
         ! total potential on the grid
         real, dimension (:), allocatable :: v
 
-!       character (len = 30) filename
-
         ! for normalization
-!       real, dimension (:), allocatable :: integrand
         interface
           function simpson (mesh, integrand, dr)
             integer, intent (in) :: mesh
@@ -299,7 +295,7 @@
         nssh = species(ispecies)%nssh
         allocate (xnocc (nssh))
         do issh = 1, nssh
-          xnocc(issh) = species(ispecies)%shell(issh)%Qneutral
+          xnocc(issh) = species(ispecies)%shell(issh)%Qin
         end do
 
 ! Get the short-range and non-local psuedopotential contributions.
@@ -337,7 +333,7 @@
           write (ilogfile,*) ' ispecies = ', ispecies
           write (ilogfile,*) ' sum = ', dr*sum(wf(ispecies)%sigma),          &
      &                       ' sum = ', real(sum(xnocc(1:nssh)))
-          stop ' Check: Sum of charge density - not equal to Qneutral '
+          stop ' Check: Sum of charge density - not equal to Qin '
         end if
 
 ! Allocate some arrays for the potentials
@@ -435,7 +431,7 @@
             write (ilogfile,*) ' ispecies = ', ispecies
             write (ilogfile,*) ' sum = ', dr*sum(wf(ispecies)%sigma),        &
      &                         ' sum = ', real(sum(xnocc(1:nssh)))
-            stop ' Check: Sum of charge density - not equal to Qneutral '
+            stop ' Check: Sum of charge density - not equal to Qin '
           end if
 
 ! Set up the density for exchange-correlation potentials
@@ -737,7 +733,7 @@
 ! term 4 = kinetic
         terms = 0.0d0
         do issh = 1, species(ispecies)%nssh
-          xnocc = species(ispecies)%shell(issh)%Qneutral
+          xnocc = species(ispecies)%shell(issh)%Qin
           terms(1) = terms(1) + xnocc*v_local(issh)
           terms(2) = terms(2) + xnocc*vxc_local(issh)
           terms(3) = terms(3) + xnocc*vna_local(issh)
@@ -808,11 +804,9 @@
 ! ===========================================================================
         integer ipoint                   ! loop over mesh points
         integer issh                     ! loop over shells
-!       integer iten, ione, itwo         ! character array places
         integer iten, ione               ! character array places
         integer inum, iremainder
         integer lssh                     ! quantum number l of the shell
-!       integer nssh                     ! loop over maximum shells - nssh
         integer nZ                       ! atomic number
 
         ! for writing out wavefunctions
@@ -854,7 +848,8 @@
           write (22) species(ispecies)%shell(issh)%wffile
           write (22) species(ispecies)%name, species(ispecies)%nZ
           write (22) species(ispecies)%shell(issh)%lssh,                     &
-     &               species(ispecies)%shell(issh)%Qneutral
+     &               species(ispecies)%shell(issh)%Qneutral,                 &
+     &               species(ispecies)%shell(issh)%Qin
           write (22) species(ispecies)%shell(issh)%rcutoff,                  &
      &               species(ispecies)%rcutoff_max
           write (22) mesh
@@ -937,7 +932,9 @@
             write (22, 202) species(ispecies)%nZ, species(ispecies)%name
             write (22, 203) mesh
             write (22, 204) species(ispecies)%shell(issh)%rcutoff,             &
-     &        species(ispecies)%rcutoff_max, species(ispecies)%shell(issh)%Qneutral
+     &                      species(ispecies)%rcutoff_max,                     &
+     &                      species(ispecies)%shell(issh)%Qneutral,            &
+     &                      species(ispecies)%shell(issh)%Qin
             write (22, 205) species(ispecies)%shell(issh)%lssh
 
 ! Find (approximately) the value at r=0

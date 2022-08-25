@@ -53,6 +53,8 @@
 ! Module Declaration
 ! ===========================================================================
         module M_vnn
+
+! /SYSTEM
         use M_species
         use M_atom_functions
         use M_atomPP_functions
@@ -162,7 +164,6 @@
 ! ===========================================================================
         integer ipoint, jpoint            ! loop over mesh points
         integer issh                      ! loop over shells
-!       integer iten, ione, itwo          ! character array places
         integer iten, ione                ! character array places
         integer lssh                      ! quantum number l for shell
         integer nssh                      ! loop over maximum shells - nssh
@@ -189,7 +190,6 @@
         real, dimension (:), allocatable :: xnocc    ! occupation number
 
         ! for writing out wavefunctions
-!       integer inum, iremainder
         real, dimension (:), allocatable :: xx, yy
 
         character (len = 3) buffer

@@ -586,8 +586,8 @@
               do ipoint = 1, mesh
                 r = r + dr
                 if (r .gt. r0) then
-                  vconfine(issh, ipoint) = V0*exp(-(rcutoff - r0)/(r - r0))  &
-     &                                            /(rcutoff - r + 0.001d0)
+                  vconfine(issh, ipoint) =                                    &
+     &               V0*exp(-(rcutoff - r0)/(r - r0))/(rcutoff - r + 0.001d0)
                 end if
               end do
             end if

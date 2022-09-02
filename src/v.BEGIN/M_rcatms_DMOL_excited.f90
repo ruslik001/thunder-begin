@@ -414,22 +414,22 @@
 ! Sum up all the potential terms:
               if (iexc .eq. 12) then
               else
-                v(ipoint) = 2.0d0*(species_PP_ion(ispecies)%vc(ipoint)       &
+                v(ipoint) = 2.0d0*(species_PP_ion(ispecies)%vc(ipoint)        &
      &                             + species_PP_ion(ispecies)%vnl(issh,ipoint))&
      &                     + vee + vxc + vconfine_excited(issh,ipoint)
               end if
             end do
 
 ! Solve Schroedinger equation for potential v
-            call calculate_psi (wf_ion(ispecies)%shell_data(issh)%mesh, 0,   &
-     &                          species(ispecies)%shell(issh)%lssh,          &
-     &                          species(ispecies)%shell(issh)%rcutoff, v,    &
-     &                          wf_ion(ispecies)%shell_data(issh)%eigenvalue,&
+            call calculate_psi (wf_ion(ispecies)%shell_data(issh)%mesh, 0,    &
+     &                          species(ispecies)%shell(issh)%lssh,           &
+     &                          species(ispecies)%shell(issh)%rcutoff, v,     &
+     &                          wf_ion(ispecies)%shell_data(issh)%eigenvalue, &
      &                          wf_ion(ispecies)%shell_data(issh)%FofR)
 
 ! Add to charge denisty
             do ipoint = 1, wf_ion(ispecies)%shell_data(issh)%mesh
-              wf_ion(ispecies)%sigma(ipoint) = wf_ion(ispecies)%sigma(ipoint)&
+              wf_ion(ispecies)%sigma(ipoint) = wf_ion(ispecies)%sigma(ipoint) &
      &          + xnocc(issh)*wf_ion(ispecies)%shell_data(issh)%FofR(ipoint)**2
             end do
           end do   ! end loop over sh ells
@@ -754,7 +754,7 @@
               do ipoint = 1, mesh
                 r = r + dr
                 if (r .gt. r0) then
-                  vconfine_excited(issh, ipoint) =                           &
+                  vconfine_excited(issh, ipoint) =                            &
      &               V0*exp(-(rcutoff - r0)/(r - r0))/(rcutoff - r + 0.001d0)
                 end if
               end do
